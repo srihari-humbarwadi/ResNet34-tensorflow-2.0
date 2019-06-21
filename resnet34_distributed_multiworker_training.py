@@ -23,7 +23,7 @@ os.environ['TF_CONFIG'] = json.dumps({
     },
     'task': {'type': 'worker', 'index': task_id}
 })
-strategy = tf.distribute.experimental.MultiWorkerMirroredStrategy(communication=tf.distribute.experimental.CollectiveCommunication.RING)
+strategy = tf.distribute.experimental.MultiWorkerMirroredStrategy(communication=tf.distribute.experimental.CollectiveCommunication.NCCL)
 
 def residual_block(input_tensor, block_type, n_filters):
     shortcut = input_tensor
